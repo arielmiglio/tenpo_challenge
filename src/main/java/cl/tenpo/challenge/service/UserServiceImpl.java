@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
             User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(username));
 
             Authentication result = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-            SecurityContextHolder.getContext().setAuthentication(result);
+            //SecurityContextHolder.getContext().setAuthentication(result);
 
             user.setHasValidToken(true);
             userRepository.save(user);

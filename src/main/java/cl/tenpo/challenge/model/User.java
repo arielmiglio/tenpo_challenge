@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "user")
+@Table(name = "users_challenge")
 @Getter
 @Setter
 @NoArgsConstructor

@@ -19,7 +19,7 @@ public class OperationServiceImpl implements OperationService{
     public static RoundingMode roundingMode = RoundingMode.HALF_UP;
 
     @Override
-    public BigDecimal plusNumbers(OperatorsDTO operatorsDTO) {
+    public BigDecimal sumNumbers(OperatorsDTO operatorsDTO) {
         return operatorsDTO.getOperator1().add(operatorsDTO.getOperator2()).setScale(bigDecimalScale, roundingMode);
     }
 }

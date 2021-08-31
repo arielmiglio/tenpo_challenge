@@ -34,7 +34,7 @@ public class RequestHistoryController {
             @ApiResponse(responseCode = "400", description = "Ocurrió un error al realizar la operación"),
             @ApiResponse(responseCode = "401", description = "Error de autenticación - Debe haber un usuario logueado")})
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, path = "/hist")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public RequestsPagedListDTO list(@RequestParam(value = "pageNumber", required = false) Integer pageNumber, @RequestParam(value = "pageSize", required = false) Integer pageSize) {

@@ -51,11 +51,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers(
                                     "/api/v1/user/signup",
                                     "/api/v1/user/login",
-                                    "/api/v1/user/logout",
-                                    "/api-docs.html",
-                                    "/v3/api-docs/**",
-                                    "/swagger-ui.html",
-                                    "/swagger-ui/**").permitAll()
+                "/api-docs.html",
+                "/v3/api-docs/**",
+                " /swagger-ui.html",
+                "/swagger-ui/**"
+
+        ).permitAll()
                 .anyRequest().authenticated().and()
                 .addFilterBefore(
                         jwtTokenFilter(),
@@ -64,14 +65,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
+
     }
 
 
     @Override
     public void configure(WebSecurity web)  {
-        web.ignoring().antMatchers("/api-docs",
-                "/swagger-ui.html",
-                "/swagger-ui/**");
+        web.ignoring().antMatchers("/v3/api-docs")//
+                .antMatchers("/swagger-resources/**")//
+                .antMatchers("/swagger-ui.html")//
+                .antMatchers("/configuration/**")//
+                .antMatchers("/webjars/**")//
+                .antMatchers("/public");
     }
 
 }

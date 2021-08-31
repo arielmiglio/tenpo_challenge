@@ -17,6 +17,6 @@ public interface OperationService {
      * @param operatorsDTO DTO con operandos a sumar
      * @return BigDecimal con el resultado de la operación
      */
-    BigDecimal plusNumbers(OperatorsDTO operatorsDTO);
+    BigDecimal sumNumbers(OperatorsDTO operatorsDTO);
 
 }

@@ -33,7 +33,7 @@ import javax.validation.Valid;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -75,7 +75,6 @@ public class UserController {
     @Operation(summary = "Desloguea al usuario de la aplicación")
     @ApiResponses(value = { @ApiResponse(responseCode = "400", description = "Ocurrió un error al realizar la operación"),
                             @ApiResponse(responseCode = "200", description = "El Usuario cerró sesión exitosamente")})
-    @SecurityRequirements
     @PostMapping("/logout")
     @ResponseBody
     public ResponseEntity logout() {
@@ -84,6 +83,5 @@ public class UserController {
         userService.signOut(userDetails.getUsername());
         return new ResponseEntity(HttpStatus.OK);
     }
-
 
 }

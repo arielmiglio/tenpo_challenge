@@ -97,16 +97,34 @@ public class OperationControllerTest {
     }
 
     @Test
-    public void plusNumbersSuccessfully() throws Exception {
+    public void sumNumbersSuccessfully() throws Exception {
 
         OperatorsDTO operators = OperatorsDTO.builder().operator1(new BigDecimal(2.3)).operator2(new BigDecimal(2.3)).build();
-        mockMvc.perform(get("/api/v1/operation/plus")
+        BigDecimal op1 = new BigDecimal(2.3);
+        BigDecimal op2 = new BigDecimal(3.1);
+        mockMvc.perform(get("/api/v1/operation/sum")
                 .header("Authorization", "Bearer " + token)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(operators)))
+                .param("operator1", op1.toString())
+                .param("operator2", op2.toString())
+                .contentType("application/json"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.result").value(new BigDecimal(4.6).setScale(bigDecimalScale, RoundingMode.HALF_UP)));
+                .andExpect(jsonPath("$.result").value(new BigDecimal(5.4).setScale(bigDecimalScale, RoundingMode.HALF_UP)));
+    }
 
+    @Test
+    public void sumNumbersWithWrongParameters() throws Exception {
+
+        OperatorsDTO operators = OperatorsDTO.builder().operator1(new BigDecimal(2.3)).operator2(new BigDecimal(2.3)).build();
+
+
+        mockMvc.perform(get("/api/v1/operation/sum")
+                .header("Authorization", "Bearer " + token)
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("operator1", "q")
+                .param("operator2", "1")
+                .contentType("application/json"))
+                .andExpect(status().isBadRequest());
     }
 
 }

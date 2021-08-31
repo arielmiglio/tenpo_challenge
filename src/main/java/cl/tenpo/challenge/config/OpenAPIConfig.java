@@ -42,10 +42,8 @@ public class OpenAPIConfig {
         contact.setEmail("arielmiglio@gmail.com");
         return new Info()
                 .title("Tenpo Challenge")
-                .description("API Swagger para testear  los request del challenge" +
-                        "Completar " +
-                        "Completar " +
-                        "Anteponer el prefijo  \"Bearer \".")
+                .description("API Swagger para testear  los request del challenge \n" +
+                        "Se debe ejecutar el login y luego de obtener el token, agregarlo en la autorización. Botón \"Autorize\" a la derecha de ésta pantalla.")
                 .version("1.0.0")
                 .contact(contact);
     }
