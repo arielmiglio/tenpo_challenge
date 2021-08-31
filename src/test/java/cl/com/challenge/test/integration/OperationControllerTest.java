@@ -9,6 +9,7 @@ import cl.tenpo.challenge.web.model.OperatorsDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -76,7 +77,7 @@ public class OperationControllerTest {
     private CredentialsDTO credentials = new CredentialsDTO("jorge", "ariel");
     private String token;
 
-    @Before
+    @BeforeAll
     public void setup() throws Exception {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext)
                 .addFilter(springSecurityFilterChain).build();

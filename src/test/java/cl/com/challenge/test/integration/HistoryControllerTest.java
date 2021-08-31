@@ -24,6 +24,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.math.BigDecimal;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -109,12 +112,21 @@ public class HistoryControllerTest {
         Assert.assertEquals(requestHistoryCount + 1, requestHistoryAfter);
     }
 
+    @Test
     public void plusOperationRequestRegistrationTest() throws Exception{
         //Obtengo la cantidad de request previos en BD
         long requestHistoryCount = historyRepository.count();
-        ResultActions result = mockMvc.perform(post("/api/v1/operation/plus")
+        ResultActions result = mockMvc.perform(get("/api/v1/operation/sum")
                 .contentType(MediaType.APPLICATION_JSON));
 
+        BigDecimal op1 = new BigDecimal(2.3);
+        BigDecimal op2 = new BigDecimal(3.1);
+        mockMvc.perform(get("/api/v1/operation/sum")
+                .header("Authorization", "Bearer " + "")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("operator1", op1.toString())
+                .param("operator2", op2.toString())
+                .contentType("application/json"));
         long requestHistoryAfter = historyRepository.count();
         Assert.assertEquals(requestHistoryCount + 1, requestHistoryAfter);
     }
