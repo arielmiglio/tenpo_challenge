@@ -100,13 +100,13 @@ el apartado anterior de Swagger
 ## Detalles de Implementación
 
 ### Stack Tecnológico
-Java 16
-Spring Boot 2.5.4
-Postgres 
-Swagger - Open API
-H2 Memory Database para ejecución de Test
-Controller advice
-Junit
+- Java 16 
+- Spring Boot 2.5.4
+- Postgres 
+- Swagger - Open API
+- H2 Memory Database para ejecución de Test
+- Controller advice
+- Junit
 
 ### División por capas de la API
 
