@@ -43,7 +43,7 @@ public class OpenAPIConfig {
         return new Info()
                 .title("Tenpo Challenge")
                 .description("API Swagger para testear  los request del challenge \n" +
-                        "Se debe ejecutar el login y luego de obtener el token, agregarlo en la autorización. Botón \"Autorize\" a la derecha de ésta pantalla.")
+                        "Se debe ejecutar el login y luego de obtener el token, agregarlo en la autorización. Botón \"Authorize\" a la derecha de ésta pantalla.")
                 .version("1.0.0")
                 .contact(contact);
     }

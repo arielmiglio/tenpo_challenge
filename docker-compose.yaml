@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  app:
+    image: arielmiglio/tenpo_challenge-v1
+
+    container_name: challenge
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tenpo_challenge
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - 8080:8080
+
+  db:
+    image: postgres:13.1-alpine
+    ports:
+      - 5432:5432
+
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=tenpo_challenge
